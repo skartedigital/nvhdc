@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#7cb6de">
+  <!-- PERSONALIZAÇÃO DO EVENTO: atualize também o título abaixo e os textos indicados no README.md. -->
+  <meta property="og:title" content="1 aninho da Alice">
+  <meta property="og:description" content="Use o filtro e registre o 1º aninho do Lucca">
+  <meta property="og:image" content="preview.jpg">
+  <meta property="og:type" content="website">
+  <title>1 aninho do Lucca</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="cover-screen" class="screen cover-screen" aria-label="Capa do filtro">
+    <div class="cover-image" aria-hidden="true"></div>
+    <div class="cover-shade" aria-hidden="true"></div>
+    <div class="cover-content">
+      <div class="eyebrow">UM MOMENTO PARA GUARDAR</div>
+      <!-- PERSONALIZAÇÃO DO EVENTO: altere o nome e a idade nesta linha. -->
+      <h1>1 aninho do<br><em>Lucca</em></h1>
+      <p class="cover-date">Use a moldura e registre esse momento especial.</p>
+      <button id="open-filter" class="primary-action" type="button">
+        <span class="action-icon">✦</span>
+        <span><strong>Usar moldura</strong><small>Abrir a câmera</small></span>
+        <span class="action-arrow">→</span>
+      </button>
+      <button id="open-gallery" class="secondary-action" type="button">
+        <span class="gallery-icon" aria-hidden="true">▧</span>
+        <span><strong>Escolher foto da galeria</strong><small>Adicionar uma foto à moldura</small></span>
+      </button>
+      <p class="cover-note">Permita o acesso à câmera quando solicitado.</p>
+    </div>
+  </main>
+
+  <main id="camera-screen" class="screen camera-screen" aria-label="Câmera do filtro" hidden>
+    <video id="video" autoplay muted playsinline></video>
+    <canvas id="filterCanvas"></canvas>
+    <!-- PERSONALIZAÇÃO: troque moldura.png quando for usar este código em outro evento. -->
+    <img id="overlay" src="moldura.png" alt="Moldura do evento">
+
+    <button id="back-to-cover" class="back-button" type="button" aria-label="Voltar para a capa">‹</button>
+    <!-- A identificação do evento que aparecia acima da moldura foi removida. -->
+    <div id="recording-indicator">🔴 REC 00:00</div>
+    <div id="loading-message">Preparando a câmera…</div>
+
+    <div id="filter-panel">
+      <div id="filter-title">ESCOLHA UM EFEITO</div>
+      <div id="filter-options">
+        <button type="button" class="filter-option active" data-filter="normal">Normal</button>
+        <button type="button" class="filter-option" data-filter="bright">✦ Brilho</button>
+        <button type="button" class="filter-option" data-filter="warm">☀ Quente</button>
+        <button type="button" class="filter-option" data-filter="cool">❄ Frio</button>
+      </div>
+    </div>
+
+    <div id="buttons">
+      <button id="choose-gallery" class="round-button secondary gallery-camera-button" type="button" title="Escolher foto da galeria" aria-label="Escolher foto da galeria">▧</button>
+      <button id="switch-camera" class="round-button secondary" type="button" title="Trocar câmera" aria-label="Trocar câmera">↻</button>
+      <button id="capture" class="capture-button" type="button" title="Tirar foto" aria-label="Aplicar moldura e tirar foto"><span></span></button>
+      <button id="start-recording" class="round-button secondary" type="button" title="Gravar vídeo" aria-label="Gravar vídeo">●</button>
+      <button id="stop-recording" class="round-button secondary" type="button" title="Parar gravação" aria-label="Parar gravação" style="display:none;">■</button>
+    </div>
+  </main>
+
+  <!-- Sem atributo capture: o celular pode oferecer galeria ou câmera para escolher a imagem. -->
+  <input id="gallery-input" type="file" accept="image/*" hidden>
+  <canvas id="canvas" style="display:none;"></canvas>
+  <canvas id="recordingCanvas" style="display:none;"></canvas>
+
+  <section id="preview-container" class="result-sheet" aria-label="Foto pronta">
+    <div class="sheet-handle"></div>
+    <p class="result-kicker">MOMENTO REGISTRADO</p>
+    <h2>Sua foto ficou linda</h2>
+    <img id="photo-preview" alt="Prévia da foto com moldura">
+    <div class="result-actions">
+      <button id="share-btn" class="result-button share-button" type="button">↗ <span>Enviar para o Instagram</span></button>
+      <button id="save-btn" class="result-button save-button" type="button">↓ <span>Salvar na galeria</span></button>
+      <button id="retry-btn" class="retry-button" type="button">Voltar à foto</button>
+    </div>
+    <div id="instructions">No iPhone, escolha “Salvar Imagem” ou “Salvar em Fotos” na tela que será aberta.</div>
+  </section>
+
+  <div id="video-preview-container">
+    <video id="video-preview" controls playsinline></video>
+    <button id="save-video-btn">Salvar vídeo</button>
+    <div id="video-instructions">No iPhone, toque em “Salvar Vídeo” e, na tela de compartilhamento, escolha “Salvar Vídeo” para enviar ao app Fotos.</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
