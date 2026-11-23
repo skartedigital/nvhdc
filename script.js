@@ -8,8 +8,8 @@ const openGalleryBtn = document.getElementById("open-gallery");
 const chooseGalleryBtn = document.getElementById("choose-gallery");
 
 /* PERSONALIZAÇÃO DO EVENTO: atualize este nome e a versão sem espaços abaixo. */
-const EVENT_NAME = "Alice 1 aninho";
-const EVENT_FILE_SLUG = "alice-1-aninho";
+const EVENT_NAME = "Lucca 1 aninho";
+const EVENT_FILE_SLUG = "Lucca-1-aninho";
 const GALLERY_OUTPUT_SIZE = { width: 1080, height: 1920 };
 
 const coverScreen = document.getElementById("cover-screen");
